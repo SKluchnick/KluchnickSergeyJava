@@ -31,7 +31,7 @@ public class ArrayImplement {
                 || enteredValue.equalsIgnoreCase("yes"));
     }
 
-    private int[] fill(int num) {
+    public int[] fill(int num) {
         Random random = new Random();
         int[] array = new int[num];
         for (int i = 0; i < array.length; i++) {
@@ -40,7 +40,7 @@ public class ArrayImplement {
         return array;
     }
 
-    private int checkInput(String enteredValue) {
+    public int checkInput(String enteredValue) {
         int parsedValue = 0;
         try {
             parsedValue = Integer.parseInt(enteredValue);
@@ -53,7 +53,7 @@ public class ArrayImplement {
     }
 
 
-    private int countEven(int num) {
+    public int countEven(int num) {
         int[] arrayCountEven = fill(num);
         int countEven = 0;
         for (int i : arrayCountEven) {
@@ -65,7 +65,7 @@ public class ArrayImplement {
         return countEven;
     }
 
-    private int countOdd(int num) {
+    public int countOdd(int num) {
         int[] arrayCountOdd = fill(num);
         int countOdd = 0;
         for (int i : arrayCountOdd) {
@@ -77,7 +77,7 @@ public class ArrayImplement {
         return countOdd;
     }
 
-    private int maxNumber(int num) {
+    public int maxNumber(int num) {
         int[] maxNumber = fill(num);
         int max = 0;
         for (int i : maxNumber) {
@@ -89,7 +89,7 @@ public class ArrayImplement {
         return max;
     }
 
-    private int minNumber(int num) {
+    public int minNumber(int num) {
         int[] minNumber = fill(num);
         int min = 10;
         for (int i : minNumber) {
@@ -101,7 +101,7 @@ public class ArrayImplement {
         return min;
     }
 
-    private int sumNumber(int num) {
+    public int sumNumber(int num) {
         int[] sumNumber = fill(num);
         int sum = 0;
         for (int i : sumNumber) {

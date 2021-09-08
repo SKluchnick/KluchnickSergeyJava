@@ -33,6 +33,8 @@ public class MessageImplement {
             if (numOne > 7) {
                 outPut = "Hello";
                 break;
+            }else{
+                System.out.println("This number is absent");
             }
 
         }

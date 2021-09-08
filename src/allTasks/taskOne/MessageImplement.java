@@ -33,12 +33,9 @@ public class MessageImplement {
             if (numOne > 7) {
                 outPut = "Hello";
                 break;
-            }else{
-                System.out.println("This number is absent");
             }
 
         }
-
         return outPut;
 
     }
@@ -49,7 +46,7 @@ public class MessageImplement {
         int number = 1;
         boolean flag = false;
         while (!flag) {
-            System.out.println("Please write 1 digits <first digits>");
+            System.out.println("Please write 1 digits <first digits>, must be positive digit");
             enteredString = inputDataFromConsole.getParameters();
             listEnteredParameters = Arrays.asList(enteredString.trim().split(" "));
             if (listEnteredParameters.size() != number) {
@@ -63,14 +60,18 @@ public class MessageImplement {
 
     public int checkInput(String enteredValue) {
         int parsedValue = 0;
-        try {
-            parsedValue = Integer.parseInt(enteredValue);
-        } catch (NumberFormatException nfe) {
-            System.out.println(nfe.getMessage());
-            System.err.println("Must be digit");
-
+        while (true){
+            try {
+                parsedValue = Integer.parseInt(enteredValue);
+            }
+            catch (NumberFormatException nfe) {
+                System.err.println("Must be positive  digit");
+                break;
+            }if(parsedValue<=0){
+                System.err.println("Must be positive  digit");
+                break;
+            }
         }
-
 
         return parsedValue;
     }
@@ -80,5 +81,10 @@ public class MessageImplement {
                 || enteredValue.equalsIgnoreCase("yes"));
     }
 
+    public static void main(String[] args) {
+        MessageImplement messageImplement = new MessageImplement();
+   int str = messageImplement.checkInput("-5");
+        System.out.println(str);
+    }
 
 }

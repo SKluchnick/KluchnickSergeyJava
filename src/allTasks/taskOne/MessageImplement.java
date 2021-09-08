@@ -15,7 +15,6 @@ public class MessageImplement {
     private InputDataFromConsole inputDataFromConsole = new InputDataFromConsole();
     private String enteredString;
 
-
     public String getNumber() {
         String outPut = "";
         while (true) {
@@ -34,12 +33,9 @@ public class MessageImplement {
                 outPut = "Hello";
                 break;
             }
-
         }
         return outPut;
-
     }
-
 
     public List<String> splitEnteredParameters() {
         List<String> listEnteredParameters = new ArrayList<>();
@@ -70,9 +66,10 @@ public class MessageImplement {
             }if(parsedValue<=0){
                 System.err.println("Must be positive  digit");
                 break;
+            }else {
+                break;
             }
         }
-
         return parsedValue;
     }
 
@@ -81,10 +78,4 @@ public class MessageImplement {
                 || enteredValue.equalsIgnoreCase("yes"));
     }
 
-    public static void main(String[] args) {
-        MessageImplement messageImplement = new MessageImplement();
-   int str = messageImplement.checkInput("-5");
-        System.out.println(str);
-    }
-
-}
+  }

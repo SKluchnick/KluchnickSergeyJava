@@ -27,12 +27,10 @@ public class MessageImplement {
                 break;
             }
             List<String> listEnteredParameters = splitEnteredParameters();
-            String numOne = checkInput(listEnteredParameters.get(0));
-            if (numOne.equals("Vyacheslav")) {
+            String numOne = checkInputSecond(listEnteredParameters.get(0));
+            if (numOne.equalsIgnoreCase("Vyacheslav")) {
                 outPut = templateHandler.getMap(numOne).generateMessage();
                 break;
-            } else {
-                System.out.println("This name is absent ");
             }
 
         }
@@ -59,19 +57,43 @@ public class MessageImplement {
     }
 
 
-    public String checkInput(String enteredValue) {
+    public String checkInputFirst(String enteredValue) {
         Pattern pattern = Pattern.compile("[а-яА-ЯёЁa-zA-Z]");
         Matcher matcher = pattern.matcher(enteredValue);
         for (int i = 0; i < enteredValue.length(); i++) {
             while (!matcher.find()) {
-                throw new IllegalArgumentException("Must be only letters");
+                throw new IllegalArgumentException("Must be only one word");
+            }
+        }
+        if (enteredValue.length() == 0) {
+            throw new IllegalArgumentException("Must be only one word");
+        }
+        return enteredValue;
+    }
 
+    public String checkInputSecond(String enteredValue) {
+        outer:while (true) {
+            Pattern pattern = Pattern.compile("[а-яА-ЯёЁa-zA-Z]");
+            Matcher matcher = pattern.matcher(enteredValue);
+            for (int i = 0; i < enteredValue.length(); i++) {
+                while (!matcher.find()) {
+                    System.err.println("Must be only one word");
+                    break outer;
+                }
+            }
+            if (enteredValue.length() == 0) {
+                System.err.println("Must be only one word");
+                break;
+            }
+            if ( !enteredValue.equalsIgnoreCase("Vyacheslav")) {
+                System.err.println("Name does not exist");
+                break;
+            }
+            else {
+                break;
             }
         }
 
-        if (enteredValue.length() == 0) {
-            throw new IllegalArgumentException("Must be only letters");
-        }
         return enteredValue;
     }
 
@@ -80,6 +102,5 @@ public class MessageImplement {
         return (enteredValue.equalsIgnoreCase("y")
                 || enteredValue.equalsIgnoreCase("yes"));
     }
-
 
 }

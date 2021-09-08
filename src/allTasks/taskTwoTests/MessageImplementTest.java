@@ -2,7 +2,6 @@ package allTasks.taskTwoTests;
 
 import allTasks.taskTwo.MessageImplement;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -17,7 +16,7 @@ class MessageImplementTest {
     @ValueSource(strings = {"25"})
     void checkInput(String strings) {
         try {
-            messageImplement.checkInput(strings);
+            messageImplement.checkInputFirst(strings);
         } catch (IllegalArgumentException e) {
             Assertions.assertEquals("Must be only letters", e.getMessage());
         }
@@ -27,7 +26,7 @@ class MessageImplementTest {
     @ValueSource(strings = {""})
     void checkInputTwo(String strings) {
         try {
-            String result = messageImplement.checkInput(strings);
+            String result = messageImplement.checkInputFirst(strings);
         } catch (IllegalArgumentException e) {
             Assertions.assertEquals("Must be only letters", e.getMessage());
         }
@@ -36,7 +35,7 @@ class MessageImplementTest {
     @ParameterizedTest
     @ValueSource(strings = {"Hello"})
     void checkInputThree(String strings) {
-        String result = messageImplement.checkInput(strings);
+        String result = messageImplement.checkInputFirst(strings);
         Assertions.assertEquals("Hello", result);
 
     }
